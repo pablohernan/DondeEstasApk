@@ -1,0 +1,19 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.donde.estas.apk"
+        },
+        "plugin.google.maps": {
+            "API_KEY_FOR_ANDROID": "AIzaSyCcqPJdrSbVBTz3EMOubKyuVKdqjPRhwek",
+            "PACKAGE_NAME": "com.donde.estas.apk"
+        }
+    },
+    "dependent_plugins": {}
+}

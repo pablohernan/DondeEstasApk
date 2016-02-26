@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="cordova.js"></script>
+    <script src="js/socket.io-1.2.1.js"></script>
+    <script src="js/client.js"></script>
+    <script src="js/config.js"></script>  <!-- Loaded via REST API -->        
+    <script type="text/javascript">
+    var map;
+    document.addEventListener("deviceready", function() {
+      var div = document.getElementById("map_canvas");
+
+      // Initialize the map view
+      map = plugin.google.maps.Map.getMap(div);
+
+      // Wait until the map is ready status.
+      map.addEventListener(plugin.google.maps.event.MAP_READY, onMapReady);
+    }, false);
+
+    function onMapReady() {
+      var button = document.getElementById("button");
+      button.addEventListener("click", onBtnClicked, false);
+    }
+
+    function onBtnClicked() {
+      map.showDialog();
+    }
+	
+	function enviar(){
+		var nombre = document.getElementById('nombre').value;
+		var div_usuario = document.getElementById('usuario');
+		var div_console = document.getElementById('console');
+		
+		div_usuario.style.display = 'none';
+		div_console.style.display = '';
+		
+		/* inicio */
+		var client = new Client();
+		client.setName( nombre );
+		client.connect();
+	}	
+	
+    </script>
+  </head>
+  <body>
+    <h3>PhoneGap-GoogleMaps-Plugin</h3>
+    <div style="width:100%;height:400px" id="map_canvas"></div>
+    <button id="button">Full Screen</button>
+    
+<div id="usuario">
+	<span>Nombre : </span><input id="nombre"/>
+	<input type="button" onclick="enviar()" value="Enviar" />
+</div>  
+
+<input type="button" onclick="getPosition()" value="Teste location" />
+  
+  
+  <div id="console" style="display:none">
+	  <div id="top">Intentando conectar websocket... Por ahora nada... :)</div>
+	  <div id="mid">Tiempo loop: <span id="ping"></span></div>
+	  <div id="clientes"></div>
+  </div>
+      
+    
+  </body>
+</html
